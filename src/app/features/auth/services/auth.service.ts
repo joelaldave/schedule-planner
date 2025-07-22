@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { SupabaseService } from '../../../core/services/supabase.service';
 import { SignInWithPasswordCredentials, SignUpWithPasswordCredentials } from '@supabase/supabase-js';
-import { catchError, from, tap, throwError } from 'rxjs';
+import { catchError, from, map, tap, throwError } from 'rxjs';
+import { mapUser } from '../mappers/user.mapper';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,22 @@ export class AuthService {
   session(){
     return this._supabaseClient.auth.getSession()
   }
+
+  getCurrentUser(){
+    return from(this._supabaseClient.auth.getUser())
+      .pipe(
+        map(response => {
+          if (response.error) {
+            throw new Error(response.error.message);
+          }
+          return mapUser(response.data.user);
+        }),
+        catchError((error) => {
+          return throwError(() => new Error(error.message));
+        })
+      );
+  }
+
 
   signInWithGoogle(){
     return from(this._supabaseClient.auth.signInWithOAuth({
