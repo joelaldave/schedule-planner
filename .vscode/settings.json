@@ -1,0 +1,20 @@
+{
+    "angular-schematics.schematicsDefaultOptions": {
+        "angular-*": {
+            "externalTemplate": true,
+            "skipStyle": true
+        }
+    },
+    "github.copilot.chat.codeGeneration.instructions": [
+      {
+        "file": "./.vscode/daisyui.md",
+      },
+      {
+        "file": "./.vscode/tailwind.md",
+      },
+      {
+        "file": "./.vscode/angular.md",
+      },
+      
+    ],
+}

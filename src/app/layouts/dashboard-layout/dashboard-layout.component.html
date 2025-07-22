@@ -1,0 +1,355 @@
+<!-- Modern Dashboard Layout -->
+<div class="min-h-screen bg-gradient-to-br from-base-100 to-base-200/50">
+  <!-- Mobile Navigation -->
+  <div class="lg:hidden">
+    <div class="navbar bg-base-100/90 backdrop-blur-md border-b border-base-200 sticky top-0 z-50">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-80 border border-base-200">
+            <!-- Mobile menu items -->
+            <li class="menu-title">
+              <span class="text-xs font-bold text-primary">NAVEGACIÓN</span>
+            </li>
+            <li><a class="flex items-center gap-3 active">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span>Dashboard</span>
+            </a></li>
+            <li><a class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-transparent rounded-full border border-base-content/20"></div>
+              <span>Calendario</span>
+            </a></li>
+            <li><a class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-transparent rounded-full border border-base-content/20"></div>
+              <span>Tareas</span>
+              <div class="badge badge-primary badge-xs">12</div>
+            </a></li>
+            <li><a class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-transparent rounded-full border border-base-content/20"></div>
+              <span>Proyectos</span>
+            </a></li>
+            <li><a class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-transparent rounded-full border border-base-content/20"></div>
+              <span>Equipo</span>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="navbar-center">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-content" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="font-bold text-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Scheduler</span>
+        </div>
+      </div>
+      
+      <div class="navbar-end">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-8 rounded-full ring-2 ring-primary/20">
+              <img alt="User avatar" src="https://picsum.photos/32/32?random=1" />
+            </div>
+          </div>
+          <ul tabindex="0" class="dropdown-content mt-3 z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-60 border border-base-200">
+            <li class="px-4 py-3 border-b border-base-200">
+              <div class="flex items-center gap-3">
+                <div class="avatar">
+                  <div class="w-10 rounded-full">
+                    <img src="https://picsum.photos/40/40?random=1" />
+                  </div>
+                </div>
+                <div>
+                  <div class="font-semibold">Juan Pérez</div>
+                  <div class="text-xs text-base-content/60">juan@ejemplo.com</div>
+                </div>
+              </div>
+            </li>
+            <li><a class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Mi Perfil
+            </a></li>
+            <li><a class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Configuración
+            </a></li>
+            <div class="divider my-1"></div>
+            <li><a class="flex items-center gap-3 text-error">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Cerrar Sesión
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Layout -->
+  <div class="lg:flex hidden">
+    <!-- Sidebar -->
+    <aside class="w-72 min-h-screen bg-base-100/80 backdrop-blur-xl border-r border-base-200/50">
+      <!-- Logo Section -->
+      <div class="p-6 border-b border-base-200/50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-content" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Scheduler</h1>
+            <p class="text-xs text-base-content/60">Planificador Inteligente</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="p-6 border-b border-base-200/50">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-3 border border-primary/10">
+            <div class="text-2xl font-bold text-primary">12</div>
+            <div class="text-xs text-base-content/60">Tareas Pendientes</div>
+          </div>
+          <div class="bg-gradient-to-br from-success/10 to-success/5 rounded-lg p-3 border border-success/10">
+            <div class="text-2xl font-bold text-success">3</div>
+            <div class="text-xs text-base-content/60">Completadas Hoy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="p-4">
+        <div class="space-y-2">
+          <!-- Main Navigation -->
+          <div class="space-y-1">
+            <div class="px-3 py-2">
+              <h3 class="text-xs font-semibold text-base-content/50 uppercase tracking-wide">Principal</h3>
+            </div>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 text-primary border border-primary/20 transition-all duration-200">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span class="font-medium">Dashboard</span>
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-base-content/20 rounded-full group-hover:bg-primary transition-colors"></div>
+              <span class="font-medium">Calendario</span>
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-base-content/20 rounded-full group-hover:bg-primary transition-colors"></div>
+              <span class="font-medium">Tareas</span>
+              <div class="badge badge-primary badge-sm ml-auto">12</div>
+            </a>
+          </div>
+
+          <!-- Projects Section -->
+          <div class="space-y-1 pt-4">
+            <div class="px-3 py-2">
+              <h3 class="text-xs font-semibold text-base-content/50 uppercase tracking-wide">Proyectos</h3>
+            </div>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+              <span class="font-medium">Proyecto Alpha</span>
+              <div class="w-2 h-2 bg-warning rounded-full ml-auto"></div>
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span class="font-medium">Proyecto Beta</span>
+              <div class="w-2 h-2 bg-success rounded-full ml-auto"></div>
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+              <span class="font-medium">Diseño UI/UX</span>
+              <div class="w-2 h-2 bg-info rounded-full ml-auto"></div>
+            </a>
+          </div>
+
+          <!-- Team Section -->
+          <div class="space-y-1 pt-4">
+            <div class="px-3 py-2">
+              <h3 class="text-xs font-semibold text-base-content/50 uppercase tracking-wide">Equipo</h3>
+            </div>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-base-content/20 rounded-full group-hover:bg-primary transition-colors"></div>
+              <span class="font-medium">Miembros</span>
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-base-200/50 transition-all duration-200 group">
+              <div class="w-2 h-2 bg-base-content/20 rounded-full group-hover:bg-primary transition-colors"></div>
+              <span class="font-medium">Reportes</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Bottom Section -->
+      <div class="mt-auto p-4">
+        <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-4 border border-primary/10">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-content" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-sm">¿Necesitas ayuda?</div>
+              <div class="text-xs text-base-content/60">Centro de soporte</div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm w-full">
+            Contactar Soporte
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Header -->
+      <header class="bg-base-100/80 backdrop-blur-xl border-b border-base-200/50 p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="breadcrumbs text-sm">
+              <ul>
+                <li><span class="text-base-content/60">Dashboard</span></li>
+                <li><span class="font-semibold">Inicio</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <!-- Search -->
+            <div class="form-control">
+              <div class="relative">
+                <input type="text" placeholder="Buscar..." class="input input-bordered input-sm w-64 pl-10 bg-base-100/50 border-base-200 focus:border-primary" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="dropdown dropdown-end">
+              <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5a6 6 0 10-10.196 5.196a7.5 7.5 0 000 10.596A6 6 0 105 17h5v5l-5-5z" />
+                  </svg>
+                  <span class="badge badge-xs badge-primary indicator-item animate-pulse">3</span>
+                </div>
+              </div>
+              <div tabindex="0" class="dropdown-content mt-3 z-[1] card card-compact w-80 bg-base-100 shadow-2xl border border-base-200">
+                <div class="card-body">
+                  <h3 class="card-title text-sm">Notificaciones Recientes</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-3 bg-info/5 rounded-lg border border-info/10">
+                      <div class="w-2 h-2 bg-info rounded-full mt-2"></div>
+                      <div class="flex-1">
+                        <div class="text-sm font-medium">Nueva tarea asignada</div>
+                        <div class="text-xs text-base-content/60">Revisar diseño de la página principal</div>
+                        <div class="text-xs text-base-content/40">Hace 5 minutos</div>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-warning/5 rounded-lg border border-warning/10">
+                      <div class="w-2 h-2 bg-warning rounded-full mt-2"></div>
+                      <div class="flex-1">
+                        <div class="text-sm font-medium">Reunión en 30 minutos</div>
+                        <div class="text-xs text-base-content/60">Daily standup con el equipo</div>
+                        <div class="text-xs text-base-content/40">Hace 15 minutos</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn btn-primary btn-sm btn-block">Ver todas</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme Toggle -->
+            <label class="swap swap-rotate btn btn-ghost btn-circle">
+              <input type="checkbox" class="theme-controller" value="dark" />
+              <svg class="swap-off fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/>
+              </svg>
+              <svg class="swap-on fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/>
+              </svg>
+            </label>
+
+            <!-- User Menu -->
+            <div class="dropdown dropdown-end">
+              <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-8 rounded-full ring-2 ring-primary/20">
+                  <img alt="User avatar" src="https://picsum.photos/32/32?random=1" />
+                </div>
+              </div>
+              <ul tabindex="0" class="dropdown-content mt-3 z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-60 border border-base-200">
+                <li class="px-4 py-3 border-b border-base-200">
+                  <div class="flex items-center gap-3">
+                    <div class="avatar">
+                      <div class="w-10 rounded-full">
+                        <img src="https://picsum.photos/40/40?random=1" />
+                      </div>
+                    </div>
+                    <div>
+                      <div class="font-semibold">Juan Pérez</div>
+                      <div class="text-xs text-base-content/60">juan@ejemplo.com</div>
+                    </div>
+                  </div>
+                </li>
+                <li><a class="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Mi Perfil
+                </a></li>
+                <li><a class="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Configuración
+                </a></li>
+                <div class="divider my-1"></div>
+                <li><a class="flex items-center gap-3 text-error">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  Cerrar Sesión
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 overflow-auto">
+        <div class="max-w-7xl mx-auto">
+          <!-- Content outlet where child routes will be rendered -->
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

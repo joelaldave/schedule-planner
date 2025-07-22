@@ -1,0 +1,41 @@
+<fieldset class="fieldset bg-base-200 rounded-box w-xs">
+
+    <p class="text-2xl"> Sign Up</p>
+    <form [formGroup]="signUpForm" class="space-y-8 relative" (ngSubmit)="onSubmit()">
+        <label class="floating-label relative">
+            <span>Your Email</span>
+            <input type="text" placeholder="mail@site.com" formControlName="email" class="input input-md" />
+            <div class="text-xs text-error mt-1 absolute top-full left-0"
+                [class.hidden]="!formValidatorsCustom.isValidField(signUpForm, 'email')">
+                {{ formValidatorsCustom.getFieldError(signUpForm, 'email') }}
+            </div>
+        </label>
+
+        <label class="floating-label relative">
+            <span>Your Password</span>
+            <input type="text" placeholder="********" formControlName="password" class="input input-md" />
+            <div class="text-xs text-error mt-1 absolute top-full left-0"
+                [class.hidden]="!formValidatorsCustom.isValidField(signUpForm, 'password')">
+                {{ formValidatorsCustom.getFieldError(signUpForm, 'password') }}
+            </div>
+        </label>
+
+        <button type="submit" class="btn btn-neutral mt-4 w-full" [disabled]="signUpForm.invalid">Sign Up</button>
+    </form>
+
+
+    <div class="flex flex-col items-center">
+        <a class="link link-hover" routerLink="/auth/sign-in">Sign In</a>
+    </div>
+</fieldset>
+
+
+@if (messageResponse().show) {
+<div class="toast toast-start">
+    <div class="alert " [ngClass]="{'alert-success': messageResponse().ok,
+            'alert-error': !messageResponse().ok}">
+        <span>{{ messageResponse().message}}</span>
+    </div>
+
+</div>
+}
