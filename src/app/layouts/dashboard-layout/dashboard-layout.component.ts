@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../features/auth/services/auth.service';
-import { User } from '../../features/auth/interfaces/user.interface';
+import { Profile } from '../../features/auth/interfaces/profile.interface';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -40,7 +40,7 @@ export class DashboardLayoutComponent {
     }
   ]);
 
-  user = signal<User | null>(null);
+  user = signal<Profile | null>(null);
 
   stats = signal({
     pendingTasks: 12,
@@ -58,7 +58,7 @@ export class DashboardLayoutComponent {
   loadUserData() {
     // Obtener información del usuario desde Supabase
     this.authService.getCurrentUser().subscribe({
-      next: (user: User | null) => {
+      next: (user: Profile | null) => {
         if (user) {
           this.user.set({
             id: user.id,

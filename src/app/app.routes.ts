@@ -14,6 +14,11 @@ export const routes: Routes = [
         canMatch: [authenticatedGuard],
     },
     {
+        path: 'admin',
+        loadChildren: () => import('./features/admin/admin.routes').then(m => m.adminRoutes),
+        canMatch: [authenticatedGuard],
+    },
+    {
         path:'**',
         redirectTo: 'auth'
     }

@@ -1,8 +1,8 @@
 import { User as UserSupabase } from "@supabase/supabase-js";
-import { User } from "../interfaces/user.interface";
+import { Profile } from "../interfaces/profile.interface";
 
 
-export function mapUser(user: UserSupabase | null): User {
+export function mapUser(user: UserSupabase | null): Profile {
   return {
     id: user?.id || '',
     name: user?.user_metadata?.['name'] || 'Cargando...',
