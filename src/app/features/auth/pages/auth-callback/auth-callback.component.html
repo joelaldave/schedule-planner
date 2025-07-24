@@ -1,0 +1,29 @@
+<div class="min-h-screen flex items-center justify-center bg-base-200">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body items-center text-center">
+      @if (isProcessing()) {
+        <span class="loading loading-spinner loading-lg text-primary"></span>
+        <h2 class="card-title mt-4">Procesando invitación...</h2>
+        <p class="text-base-content/70">Por favor espera mientras activamos tu cuenta.</p>
+      } @else if (hasError()) {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.728-.833-2.498 0L4.316 16.5c-.77.833.192 2.5 1.732 2.5z" />
+        </svg>
+        <h2 class="card-title text-error mt-4">Error en la invitación</h2>
+        <p class="text-base-content/70">{{ errorMessage() }}</p>
+        <div class="card-actions justify-end mt-4">
+          <button class="btn btn-primary" (click)="goToLogin()">Ir al Login</button>
+        </div>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h2 class="card-title text-success mt-4">¡Cuenta activada!</h2>
+        <p class="text-base-content/70">Tu cuenta ha sido activada correctamente. Serás redirigido al dashboard.</p>
+        <div class="card-actions justify-end mt-4">
+          <button class="btn btn-primary" (click)="goToDashboard()">Ir al Dashboard</button>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -4,19 +4,19 @@ import { UsersListComponent } from "./users-manager/pages/users-list/users-list.
 
 export const adminRoutes :Routes = [
     {
-        path: '',
+        path: 'users',
         component: DashboardLayoutComponent,
         children: [
             {
-                path: 'users',
+                path: '',
                 loadComponent: () => import('./users-manager/pages/users-list/users-list.component').then(m => m.UsersListComponent),
             },
             {
-                path: 'users/new',
+                path: 'new',
                 loadComponent: () => import('./users-manager/pages/new-edit-user/new-edit-user.component').then(m => m.NewEditUserComponent),
             },
             {
-                path: 'users/:id',
+                path: ':id',
                 loadComponent: () => import('./users-manager/pages/new-edit-user/new-edit-user.component').then(m => m.NewEditUserComponent),
             },
             {

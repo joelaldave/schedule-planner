@@ -8,14 +8,14 @@ export interface User {
     createdAt?: string;
     lastSignInAt?: string;
     role?: 'admin' | 'user' | 'moderator';
-    status?: 'active' | 'inactive' | 'suspended';
+    status?: 'active' | 'inactive' ;
 }
 
 
 export interface UserFilters {
   search?: string;
   role?: 'admin' | 'moderator' | 'user' | 'all';
-  status?: 'active' | 'inactive' | 'suspended' | 'all';
+  status?: 'active' | 'inactive' | 'all';
   page?: number;
   limit?: number;
 }
@@ -37,12 +37,12 @@ export interface PaginatedUsers {
 }
 
 export interface UserResponse {
-    id: any;
-    email: any;
-    full_name: any;
-    role: any;
-    status: any;
-    created_at: any;
-    updated_at: any;
-    last_sign_in_at: any;
+    id: string;
+    email: string;
+    name: string;
+    role: string;
+    status: boolean;
+    created_at: string;
+    updated_at: string;
+    last_sign_in_at: string | null;
 }

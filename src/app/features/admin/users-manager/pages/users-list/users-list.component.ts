@@ -1,8 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Subject, takeUntil } from 'rxjs';
 import { UserFilters } from '../../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -10,12 +17,12 @@ import { UserFilters } from '../../interfaces/user.interface';
   templateUrl: './users-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsersListComponent { 
-
+export class UsersListComponent {
   Math = Math; // Exponer Math para uso en la plantilla
 
   private userService = inject(UserService);
   private destroy$ = new Subject<void>();
+  private router = inject(Router);
 
   // Signals para el estado local del componente
   selectedUserIds = signal<string[]>([]);
@@ -29,11 +36,13 @@ export class UsersListComponent {
   isAllSelected = computed(() => {
     const users = this.userService.paginatedUsers().users;
     const selectedIds = this.selectedUserIds();
-    return users.length > 0 && users.every(user => selectedIds.includes(user.id));
+    return (
+      users.length > 0 && users.every((user) => selectedIds.includes(user.id))
+    );
   });
 
   hasSelectedUsers = computed(() => this.selectedUserIds().length > 0);
-  
+
   selectedCount = computed(() => this.selectedUserIds().length);
 
   // Signals del servicio (acceso directo)
@@ -47,16 +56,17 @@ export class UsersListComponent {
     this.loadUsers();
   }
 
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
-   /**
+  /**
    * Carga la lista inicial de usuarios
    */
   loadUsers(): void {
-    this.userService.loadUsers()
+    this.userService
+      .loadUsers()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (users) => {
@@ -64,7 +74,7 @@ export class UsersListComponent {
         },
         error: (error) => {
           console.error('Error cargando usuarios:', error);
-        }
+        },
       });
   }
 
@@ -93,7 +103,7 @@ export class UsersListComponent {
       role: this.selectedRole() as any,
       status: this.selectedStatus() as any,
       page: this.currentPage(),
-      limit: this.pageLimit()
+      limit: this.pageLimit(),
     };
 
     this.userService.setFilters(filters);
@@ -134,9 +144,9 @@ export class UsersListComponent {
    * Selecciona/deselecciona un usuario
    */
   toggleUserSelection(userId: string): void {
-    this.selectedUserIds.update(ids => {
+    this.selectedUserIds.update((ids) => {
       if (ids.includes(userId)) {
-        return ids.filter(id => id !== userId);
+        return ids.filter((id) => id !== userId);
       } else {
         return [...ids, userId];
       }
@@ -148,8 +158,8 @@ export class UsersListComponent {
    */
   toggleAllSelection(): void {
     const users = this.userService.paginatedUsers().users;
-    const allUserIds = users.map(user => user.id);
-    
+    const allUserIds = users.map((user) => user.id);
+
     if (this.isAllSelected()) {
       // Deseleccionar todos
       this.selectedUserIds.set([]);
@@ -163,19 +173,26 @@ export class UsersListComponent {
    * Elimina un usuario individual
    */
   onDeleteUser(userId: string, userName: string): void {
-    if (confirm(`¿Estás seguro de que quieres eliminar al usuario "${userName}"?`)) {
-      this.userService.deleteUser(userId)
+    if (
+      confirm(`¿Estás seguro de que quieres eliminar al usuario "${userName}"?`)
+    ) {
+      this.userService
+        .deleteUser(userId)
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: () => {
             console.log('Usuario eliminado exitosamente');
             // Remover de seleccionados si estaba seleccionado
-            this.selectedUserIds.update(ids => ids.filter(id => id !== userId));
+            this.selectedUserIds.update((ids) =>
+              ids.filter((id) => id !== userId)
+            );
           },
           error: (error) => {
             console.error('Error eliminando usuario:', error);
-            alert('Error al eliminar el usuario. Por favor, inténtalo de nuevo.');
-          }
+            alert(
+              'Error al eliminar el usuario. Por favor, inténtalo de nuevo.'
+            );
+          },
         });
     }
   }
@@ -183,12 +200,21 @@ export class UsersListComponent {
   /**
    * Cambia el estado de un usuario (activo/inactivo)
    */
-  onToggleUserStatus(userId: string, currentStatus: string, userName: string): void {
+  onToggleUserStatus(
+    userId: string,
+    currentStatus: string,
+    userName: string
+  ): void {
     const newStatus = currentStatus === 'active';
     const action = newStatus ? 'desactivar' : 'activar';
-    
-    if (confirm(`¿Estás seguro de que quieres ${action} al usuario "${userName}"?`)) {
-      this.userService.toggleUserStatus(userId, !newStatus)
+
+    if (
+      confirm(
+        `¿Estás seguro de que quieres ${action} al usuario "${userId}"?`
+      )
+    ) {
+      this.userService
+        .toggleUserStatus(userId, !newStatus)
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: () => {
@@ -196,8 +222,10 @@ export class UsersListComponent {
           },
           error: (error) => {
             console.error('Error cambiando estado del usuario:', error);
-            alert('Error al cambiar el estado del usuario. Por favor, inténtalo de nuevo.');
-          }
+            alert(
+              'Error al cambiar el estado del usuario. Por favor, inténtalo de nuevo.'
+            );
+          },
         });
     }
   }
@@ -208,34 +236,45 @@ export class UsersListComponent {
   onBulkDelete(): void {
     const selectedIds = this.selectedUserIds();
     const count = selectedIds.length;
-    
+
     if (count === 0) {
       alert('Por favor, selecciona al menos un usuario para eliminar.');
       return;
     }
 
-    if (confirm(`¿Estás seguro de que quieres eliminar ${count} usuario${count > 1 ? 's' : ''}?`)) {
+    if (
+      confirm(
+        `¿Estás seguro de que quieres eliminar ${count} usuario${
+          count > 1 ? 's' : ''
+        }?`
+      )
+    ) {
       // Simular eliminación múltiple (Supabase no tiene bulk delete directo)
-      const deletePromises = selectedIds.map(id => 
+      const deletePromises = selectedIds.map((id) =>
         this.userService.deleteUser(id).pipe(takeUntil(this.destroy$))
       );
 
       // Ejecutar todas las eliminaciones
-      Promise.allSettled(deletePromises.map(obs => obs.toPromise()))
-        .then(results => {
-          const successful = results.filter(r => r.status === 'fulfilled').length;
-          const failed = results.filter(r => r.status === 'rejected').length;
-          
+      Promise.allSettled(deletePromises.map((obs) => obs.toPromise())).then(
+        (results) => {
+          const successful = results.filter(
+            (r) => r.status === 'fulfilled'
+          ).length;
+          const failed = results.filter((r) => r.status === 'rejected').length;
+
           if (successful > 0) {
             console.log(`${successful} usuarios eliminados exitosamente`);
             this.selectedUserIds.set([]);
           }
-          
+
           if (failed > 0) {
             console.error(`Error eliminando ${failed} usuarios`);
-            alert(`Se eliminaron ${successful} usuarios, pero ${failed} fallaron.`);
+            alert(
+              `Se eliminaron ${successful} usuarios, pero ${failed} fallaron.`
+            );
           }
-        });
+        }
+      );
     }
   }
 
@@ -246,36 +285,48 @@ export class UsersListComponent {
     const selectedIds = this.selectedUserIds();
     const count = selectedIds.length;
     const action = activate ? 'activar' : 'desactivar';
-    
+
     if (count === 0) {
       alert(`Por favor, selecciona al menos un usuario para ${action}.`);
       return;
     }
 
-    if (confirm(`¿Estás seguro de que quieres ${action} ${count} usuario${count > 1 ? 's' : ''}?`)) {
-      const updatePromises = selectedIds.map(id => 
-        this.userService.toggleUserStatus(id, activate).pipe(takeUntil(this.destroy$))
+    if (
+      confirm(
+        `¿Estás seguro de que quieres ${action} ${count} usuario${
+          count > 1 ? 's' : ''
+        }?`
+      )
+    ) {
+      const updatePromises = selectedIds.map((id) =>
+        this.userService
+          .toggleUserStatus(id, activate)
+          .pipe(takeUntil(this.destroy$))
       );
 
-      Promise.allSettled(updatePromises.map(obs => obs.toPromise()))
-        .then(results => {
-          const successful = results.filter(r => r.status === 'fulfilled').length;
-          const failed = results.filter(r => r.status === 'rejected').length;
-          
+      Promise.allSettled(updatePromises.map((obs) => obs.toPromise())).then(
+        (results) => {
+          const successful = results.filter(
+            (r) => r.status === 'fulfilled'
+          ).length;
+          const failed = results.filter((r) => r.status === 'rejected').length;
+
           if (successful > 0) {
             console.log(`${successful} usuarios ${action}dos exitosamente`);
             this.selectedUserIds.set([]);
           }
-          
+
           if (failed > 0) {
             console.error(`Error ${action}ndo ${failed} usuarios`);
-            alert(`Se ${action}ron ${successful} usuarios, pero ${failed} fallaron.`);
+            alert(
+              `Se ${action}ron ${successful} usuarios, pero ${failed} fallaron.`
+            );
           }
-        });
+        }
+      );
     }
   }
 
- 
   /**
    * Actualiza los datos desde el servidor
    */
@@ -288,18 +339,14 @@ export class UsersListComponent {
    * Navega a la página de edición de usuario
    */
   onEditUser(userId: string): void {
-    // TODO: Implementar navegación a formulario de edición
-    console.log('Editar usuario:', userId);
-    // this.router.navigate(['/admin/users/edit', userId]);
+   this.router.navigate(['/admin/users/', userId]);
   }
 
   /**
    * Navega a la página de creación de usuario
    */
   onCreateUser(): void {
-    // TODO: Implementar navegación a formulario de creación
-    console.log('Crear nuevo usuario');
-    // this.router.navigate(['/admin/users/create']);
+     this.router.navigate(['/admin/users/new']);
   }
 
   /**
@@ -371,7 +418,7 @@ export class UsersListComponent {
    */
   formatDate(date: Date | string): string {
     const d = typeof date === 'string' ? new Date(date) : date;
-    
+
     if (!d || isNaN(d.getTime())) {
       return '-';
     }
@@ -379,7 +426,7 @@ export class UsersListComponent {
     return d.toLocaleDateString('es-ES', {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
     });
   }
 
@@ -388,7 +435,7 @@ export class UsersListComponent {
    */
   formatDateTime(date: Date | string): string {
     const d = typeof date === 'string' ? new Date(date) : date;
-    
+
     if (!d || isNaN(d.getTime())) {
       return '-';
     }
@@ -398,7 +445,7 @@ export class UsersListComponent {
       month: '2-digit',
       day: '2-digit',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     });
   }
 
@@ -407,7 +454,7 @@ export class UsersListComponent {
    */
   formatRelativeTime(date: Date | string): string {
     const d = typeof date === 'string' ? new Date(date) : date;
-    
+
     if (!d || isNaN(d.getTime())) {
       return 'Nunca';
     }
@@ -419,10 +466,12 @@ export class UsersListComponent {
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
     if (diffMins < 1) return 'Ahora mismo';
-    if (diffMins < 60) return `Hace ${diffMins} minuto${diffMins > 1 ? 's' : ''}`;
-    if (diffHours < 24) return `Hace ${diffHours} hora${diffHours > 1 ? 's' : ''}`;
+    if (diffMins < 60)
+      return `Hace ${diffMins} minuto${diffMins > 1 ? 's' : ''}`;
+    if (diffHours < 24)
+      return `Hace ${diffHours} hora${diffHours > 1 ? 's' : ''}`;
     if (diffDays < 30) return `Hace ${diffDays} día${diffDays > 1 ? 's' : ''}`;
-    
+
     return this.formatDate(d);
   }
 
@@ -433,21 +482,21 @@ export class UsersListComponent {
     const totalPages = this.users().totalPages;
     const currentPage = this.currentPage();
     const pages: number[] = [];
-    
+
     // Mostrar máximo 5 páginas
     const maxPages = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2));
     let endPage = Math.min(totalPages, startPage + maxPages - 1);
-    
+
     // Ajustar si estamos cerca del final
     if (endPage - startPage < maxPages - 1) {
       startPage = Math.max(1, endPage - maxPages + 1);
     }
-    
+
     for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
-    
+
     return pages;
   }
 
@@ -496,6 +545,4 @@ export class UsersListComponent {
   goToLastPage(): void {
     this.onPageChange(this.users().totalPages);
   }
-  
-  
 }

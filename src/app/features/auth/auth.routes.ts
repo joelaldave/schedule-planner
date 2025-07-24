@@ -20,5 +20,9 @@ export const authRoutes:Routes = [
             }
         ]
     },
+    {
+        path: 'callback',
+        loadComponent: () => import('./pages/auth-callback/auth-callback.component').then(m => m.AuthCallbackComponent) 
+    }
     
 ]
